@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimuTutor | AI-Powered STEM Simulation Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="SimuTutor home">
+      <span class="brand-mark">S</span>
+      <span>SimuTutor</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="labs.html">Labs</a>
+      <a href="projectile.html">Projectile</a>
+      <a href="pendulum.html">Pendulum</a>
+      <a href="electric-field.html">Electric Field</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">AI x STEM Education</p>
+        <h1>SimuTutor</h1>
+        <p class="subtitle">An AI-Powered Interactive STEM Simulation Lab</p>
+        <p class="hero-text">Learn physics and mathematics by experimenting with real-time Canvas simulations, adaptive hints, and visual explanations.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="labs.html">Start Learning</a>
+          <a class="btn secondary" href="projectile.html">Try Projectile Lab</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Animated STEM simulation preview">
+        <canvas id="heroCanvas" width="780" height="460"></canvas>
+        <div class="hero-meter">
+          <span>Adaptive feedback</span>
+          <strong>Ready</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band" aria-label="Core features">
+      <article class="feature-card">
+        <span class="feature-icon">01</span>
+        <h2>Interactive Simulations</h2>
+        <p>Manipulate parameters and watch STEM concepts come alive on Canvas.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">02</span>
+        <h2>Adaptive AI Hints</h2>
+        <p>Receive personalized guidance based on your experiment results.</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-icon">03</span>
+        <h2>Visual Explanations</h2>
+        <p>Understand abstract formulas through motion, graphs, and real-time feedback.</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("heroCanvas");
+    const ctx = canvas.getContext("2d");
+    let t = 0;
+
+    function drawHero() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      const sky = ctx.createLinearGradient(0, 0, 0, h);
+      sky.addColorStop(0, "#eef7ff");
+      sky.addColorStop(1, "#d7f2e6");
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.strokeStyle = "rgba(20, 72, 94, 0.18)";
+      ctx.lineWidth = 1;
+      for (let x = 40; x < w; x += 64) {
+        ctx.beginPath();
+        ctx.moveTo(x, 30);
+        ctx.lineTo(x, h - 40);
+        ctx.stroke();
+      }
+      for (let y = 44; y < h; y += 54) {
+        ctx.beginPath();
+        ctx.moveTo(30, y);
+        ctx.lineTo(w - 30, y);
+        ctx.stroke();
+      }
+
+      const ground = h - 72;
+      ctx.fillStyle = "#24434d";
+      ctx.fillRect(0, ground, w, 6);
+
+      ctx.fillStyle = "#f0b84b";
+      ctx.fillRect(w - 178, ground - 52, 92, 52);
+      ctx.fillStyle = "#173642";
+      ctx.font = "700 18px Inter, sans-serif";
+      ctx.fillText("Target", w - 165, ground - 20);
+
+      ctx.strokeStyle = "#1f7a8c";
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      for (let i = 0; i <= 120; i++) {
+        const p = i / 120;
+        const x = 74 + p * 570;
+        const y = ground - Math.sin(p * Math.PI) * 210 + p * p * 34;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      const p = (Math.sin(t) + 1) / 2;
+      const ballX = 74 + p * 570;
+      const ballY = ground - Math.sin(p * Math.PI) * 210 + p * p * 34;
+      ctx.fillStyle = "#e85555";
+      ctx.beginPath();
+      ctx.arc(ballX, ballY, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "#16333d";
+      ctx.font = "600 18px Inter, sans-serif";
+      ctx.fillText("Change parameters -> observe -> ask AI tutor", 48, 58);
+      t += 0.025;
+      requestAnimationFrame(drawHero);
+    }
+
+    drawHero();
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electric Field Lab | SimuTutor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">S</span>
+      <span>SimuTutor</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="labs.html">Labs</a>
+      <a href="projectile.html">Projectile</a>
+      <a href="pendulum.html">Pendulum</a>
+      <a class="active" href="electric-field.html">Electric Field</a>
+    </nav>
+  </header>
+
+  <main class="lab-shell">
+    <section class="lab-header">
+      <div>
+        <p class="eyebrow">Visual Lab</p>
+        <h1>Electric Field Lab</h1>
+        <p>Learning goal: visualize how positive and negative charges create electric fields.</p>
+      </div>
+      <a class="btn secondary" href="labs.html">All Labs</a>
+    </section>
+
+    <section class="workspace">
+      <div class="canvas-panel">
+        <canvas id="fieldCanvas" width="900" height="520" aria-label="Electric field visualization"></canvas>
+      </div>
+
+      <aside class="control-panel" aria-label="Electric field controls">
+        <div class="panel-section">
+          <h2>Controls</h2>
+          <p class="small-copy">Select a charge type, then click inside the field to place it.</p>
+          <div class="segmented" role="group" aria-label="Charge type">
+            <button class="active" id="positiveMode">Positive</button>
+            <button id="negativeMode">Negative</button>
+          </div>
+          <div class="button-row">
+            <button class="btn secondary" id="clearField">Clear Field</button>
+          </div>
+        </div>
+
+        <div class="panel-section ai-panel">
+          <h2>AI Tutor</h2>
+          <div id="fieldFeedback" class="feedback">Place charges to see the field vectors respond in real time.</div>
+          <div class="button-row vertical">
+            <button class="btn tutor" id="fieldHint">Ask for Hint</button>
+            <button class="btn tutor" id="fieldExplain">Explain Field</button>
+            <button class="btn tutor" id="fieldQuiz">Generate Quiz</button>
+          </div>
+        </div>
+
+        <div class="panel-section progress-panel">
+          <h2>Field Summary</h2>
+          <p id="fieldSummary">Positive: 1 | Negative: 1</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/aiTutor.js"></script>
+  <script src="js/electricField.js"></script>
+</body>
+</html>
