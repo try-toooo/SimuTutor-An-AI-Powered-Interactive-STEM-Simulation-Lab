@@ -6,6 +6,8 @@ Many students struggle with STEM subjects not because the concepts are impossibl
 
 SimuTutor was inspired by a simple idea: students should be able to learn STEM by experimenting, observing, failing, adjusting, and receiving guidance. Instead of memorizing formulas passively, learners can manipulate parameters, watch the simulation respond in real time, and receive adaptive explanations that connect the visual result back to the underlying science.
 
+https://youtu.be/vcdSxAfZIEs
+
 ## What it does
 
 SimuTutor is an interactive web-based STEM simulation lab built with HTML5, CSS3, JavaScript, and Canvas 2D. It currently includes three learning modules:
