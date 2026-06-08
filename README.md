@@ -21,6 +21,7 @@ R = \frac{v^2 \sin(2\theta)}{g}
 $$
 
 After each attempt, the AI tutor gives adaptive feedback. If the projectile lands too short, the tutor suggests increasing velocity or moving the launch angle closer to 45 degrees. If it goes too far, the tutor recommends reducing velocity or adjusting the angle. The lab also tracks attempts and hits using browser storage.
+<img width="2549" height="1242" alt="4663dc9aae7dc90ff9dc1bc8287342af" src="https://github.com/user-attachments/assets/448cc966-15f0-402c-a5f9-da42c70ce092" />
 
 ### Pendulum Lab
 
@@ -31,12 +32,14 @@ T = 2\pi\sqrt{\frac{L}{g}}
 $$
 
 The AI tutor explains how length and gravity affect the swing period. This helps students understand that a longer pendulum generally swings more slowly, while stronger gravity makes the period shorter.
+<img width="2549" height="1242" alt="2ab0949e7ab1e140504ce5af6e0ac608" src="https://github.com/user-attachments/assets/b2e7f3e6-0c91-4024-b283-c6255cb45911" />
 
 ### Electric Field Lab
 
 Students can place positive and negative charges directly on the Canvas. The simulation draws electric field vectors across the field area. The direction and strength of the arrows update as charges are added or removed.
 
 The tutor explains that electric field vectors point away from positive charges and toward negative charges, while also encouraging students to compare simple and complex charge configurations.
+<img width="2549" height="1242" alt="c63c94644580c36c5716d0fb86f53b43" src="https://github.com/user-attachments/assets/6fc29613-4914-4922-89f2-40ee14006908" />
 
 ## How we built it
 
