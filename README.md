@@ -1,61 +1,84 @@
-# SimuTutor
+# SimuTutor: An AI-Powered Interactive STEM Simulation Lab
 
-An AI-Powered Interactive STEM Simulation Lab.
+## Inspiration
 
-## Pitch
+Many students struggle with STEM subjects not because the concepts are impossible, but because they are often taught through static formulas and abstract explanations. For example, projectile motion, pendulum motion, and electric fields are all highly visual concepts, but students usually encounter them first as equations in a textbook.
 
-SimuTutor helps students learn STEM concepts through interactive Canvas simulations, adaptive hints, and real-time visual explanations.
+SimuTutor was inspired by a simple idea: students should be able to learn STEM by experimenting, observing, failing, adjusting, and receiving guidance. Instead of memorizing formulas passively, learners can manipulate parameters, watch the simulation respond in real time, and receive adaptive explanations that connect the visual result back to the underlying science.
 
-## Problem
+## What it does
 
-STEM concepts are often difficult for students because formulas can feel abstract, formula-heavy, and disconnected from visual intuition.
+SimuTutor is an interactive web-based STEM simulation lab built with HTML5, CSS3, JavaScript, and Canvas 2D. It currently includes three learning modules:
 
-## Solution
+### Projectile Motion Lab
 
-SimuTutor turns STEM learning into an interactive experiment cycle:
+Students can adjust initial velocity, launch angle, gravity, and target distance. The simulation visualizes the projectile trajectory on Canvas and checks whether the projectile reaches the target. The lab is based on the projectile range relationship:
 
-Change parameters -> run simulation -> observe the result -> get an adaptive hint -> try again -> understand the concept.
+$$
+R = \frac{v^2 \sin(2\theta)}{g}
+$$
 
-## Key Features
+After each attempt, the AI tutor gives adaptive feedback. If the projectile lands too short, the tutor suggests increasing velocity or moving the launch angle closer to 45 degrees. If it goes too far, the tutor recommends reducing velocity or adjusting the angle. The lab also tracks attempts and hits using browser storage.
 
-- Real-time Canvas 2D simulations
-- Rule-based adaptive AI tutoring engine
-- Personalized hints based on simulation outcomes
-- Concept explanations and generated quiz prompts
-- Fully browser-based experience with no backend or API key required
-- Responsive English UI for hackathon demos
+### Pendulum Lab
 
-## Labs
+Students can change pendulum length, initial angle, and gravity. The Canvas animation updates in real time and displays the estimated period:
 
-- Projectile Motion Lab: velocity, launch angle, gravity, target distance, hit detection, adaptive feedback
-- Pendulum Lab: pendulum length, initial angle, gravity, period visualization
-- Electric Field Lab: clickable positive and negative charges with field vector visualization
+$$
+T = 2\pi\sqrt{\frac{L}{g}}
+$$
 
-## Tech Stack
+The AI tutor explains how length and gravity affect the swing period. This helps students understand that a longer pendulum generally swings more slowly, while stronger gravity makes the period shorter.
 
-- HTML5
-- CSS3
-- JavaScript
-- Canvas 2D
-- LocalStorage
+### Electric Field Lab
 
-## AI Tutor Design
+Students can place positive and negative charges directly on the Canvas. The simulation draws electric field vectors across the field area. The direction and strength of the arrows update as charges are added or removed.
 
-Instead of relying on external APIs, SimuTutor runs entirely in the browser with a deterministic tutoring engine. The engine analyzes simulation states and generates adaptive hints, explanations, misconception feedback, and quiz prompts.
+The tutor explains that electric field vectors point away from positive charges and toward negative charges, while also encouraging students to compare simple and complex charge configurations.
 
-## Demo Flow
+## How we built it
 
-1. Open SimuTutor.
-2. Choose Projectile Motion Lab.
-3. Change velocity and angle.
-4. Launch the projectile.
-5. Observe whether it misses or hits the target.
-6. Click Ask for Hint.
-7. Adjust parameters based on the tutor feedback.
-8. Launch again and hit the target.
-9. Click Explain Result.
-10. Briefly show Pendulum Lab and Electric Field Lab.
+SimuTutor was built as a fully browser-based project using:
 
-## Run Locally
+* **HTML5** for page structure and semantic layout
+* **CSS3** for responsive design, cards, control panels, and visual styling
+* **JavaScript** for simulation logic, UI interaction, and tutoring behavior
+* **Canvas 2D** for real-time physics visualization
+* **LocalStorage** for saving simple progress data such as projectile attempts and hits
 
-Open `index.html` in a browser.
+The project is organized into separate pages and scripts:
+
+* `index.html` introduces the project
+* `labs.html` lets users choose a simulation lab
+* `projectile.html`, `pendulum.html`, and `electric-field.html` contain the three STEM labs
+* `projectile.js`, `pendulum.js`, and `electricField.js` handle the simulation logic
+* `aiTutor.js` contains the adaptive tutoring engine
+* `storage.js` stores lightweight user progress in the browser
+
+Instead of relying on an external AI API, SimuTutor uses a lightweight rule-based AI tutoring engine. The engine analyzes the current simulation state and generates contextual hints, explanations, misconception feedback, and quiz prompts. This makes the prototype fast, private, reliable, and easy to run without any backend or API key.
+
+## Challenges we faced
+
+One challenge was translating real STEM formulas into interactive visual behavior. For example, projectile motion uses physical variables such as velocity, angle, and gravity, but these values must also be mapped clearly onto Canvas coordinates so that the animation feels intuitive.
+
+Another challenge was designing adaptive feedback that felt educational rather than random. The tutor needed to respond differently when a projectile landed too short, too far, or near the target. This required building simple diagnostic logic around the simulation results.
+
+We also had to balance technical depth with usability. The project needed to show real physics and interactive Canvas rendering, but the interface still had to remain simple enough for beginner students to use.
+
+## What we learned
+
+Through this project, we learned how to connect STEM formulas with real-time visual simulations. We also learned how Canvas 2D can be used not only for graphics, but also as an educational medium for explaining motion, fields, and mathematical relationships.
+
+We also learned that AI in education does not always need to be a large external model. Even a small tutoring engine can provide meaningful learning support if it is grounded in the student’s actions and the current simulation state.
+
+## Accomplishments that we are proud of
+
+We are proud that SimuTutor is fully interactive and runs directly in the browser. Users can change parameters, launch simulations, place charges, observe real-time results, and receive adaptive tutoring feedback without installing anything.
+
+We are also proud of combining three different STEM topics into one consistent learning experience: projectile motion, pendulum motion, and electric fields.
+
+## What is next for SimuTutor
+
+In the future, SimuTutor could be expanded with more STEM labs, such as circuits, waves, chemical reactions, and calculus visualization. We also plan to add optional large-language-model support for more natural explanations, a teacher dashboard for classroom use, and accessibility features such as narration, keyboard navigation, and simplified reading modes.
+
+Our long-term goal is to turn SimuTutor into a lightweight, accessible, and interactive STEM learning platform where students can learn by doing instead of only memorizing.
